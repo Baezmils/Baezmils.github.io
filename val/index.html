@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine Proposal</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-image: url('your_image_url.jpg'); 
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .container {
+            text-align: center;
+            color: black; 
+        }
+
+        
+        .button-container {
+            margin-top: 20px;
+        }
+        .button {
+            width: 120px;
+            height: 40px;
+            font-size: 16px;
+            background-color: #ff6b6b;
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin: 10px;
+            transition: all 0.3s ease; 
+        }
+        .button:hover {
+            transform: scale(1.1); 
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 id="proposalText">Will You Be My Valentine?</h1>
+        <div class="button-container">
+            <button class="button" id="acceptBtn">Accept</button>
+            <button class="button" id="rejectBtn">Reject</button>
+        </div>
+    </div>
+
+    <script>
+        const acceptButton = document.getElementById('acceptBtn');
+        const rejectButton = document.getElementById('rejectBtn');
+        const proposalText = document.getElementById('proposalText');
+
+        acceptButton.addEventListener('click', () => {
+            
+            window.location.href = 'thanks.html';
+        });
+
+        let changeFactor = 1;
+        rejectButton.addEventListener('click', () => {
+            
+            const originalRejectWidth = 120; 
+            const originalRejectHeight = 40; 
+            const newRejectWidth = originalRejectWidth * (1 - 0.1 * changeFactor); 
+            const newRejectHeight = originalRejectHeight * (1 - 0.1 * changeFactor); 
+
+            rejectButton.style.width = `${newRejectWidth}px`;
+            rejectButton.style.height = `${newRejectHeight}px`;
+
+           
+            const originalAcceptWidth = 120; 
+            const originalAcceptHeight = 40; 
+            const newAcceptWidth = originalAcceptWidth + 10 * changeFactor; 
+            const newAcceptHeight = originalAcceptHeight + 4 * changeFactor; 
+
+            acceptButton.style.width = `${newAcceptWidth}px`;
+            acceptButton.style.height = `${newAcceptHeight}px`;
+
+            changeFactor++;
+        });
+    </script>
+</body>
+</html>
